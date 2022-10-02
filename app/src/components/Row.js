@@ -7,25 +7,22 @@ const Row = ({
     setNewRow
 }) => {
     
-    const [edit, setEdit] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     const [hide, setHide] = useState(false);
 
     return (
-        <tr onMouseOver={(e)=>setHide(false)} onMouseOut={(e)=>setHide(true)}>
+        <tr onMouseOver={isEditing ? null : (e)=>{setHide(false)}} onMouseOut={isEditing ? null : (e)=>{setHide(true)}}>
             <td>
                 {
                     setNewRow ? (
                         <Button type="submit">Add</Button>
                     ) : (
-                        hide ? (
-                            <div></div>
+                        isEditing ? (
+                            <Button hidden={hide} onClick={() => setIsEditing(false)}>Save</Button>
                         ) : (
-                            edit ? (
-                                <Button onClick={() => setEdit(false)}>Save</Button>
-                            ) : (
-                                <Button onClick={() => setEdit(true)}>Edit</Button>
-                            )
+                            <Button hidden={hide} onClick={() => setIsEditing(true)}>Edit</Button>
                         )
+                        
                     )
                 }
             </td>

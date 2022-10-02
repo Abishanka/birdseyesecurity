@@ -33,7 +33,7 @@ const Body = () => {
                 <Table striped>
                     <thead className='table-header'>
                         <tr>
-                            <th>----</th>
+                            <th>------</th>
                             <th>Time</th>
                             <th>Alarm Point</th>
                             <th>Building Name</th>

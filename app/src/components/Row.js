@@ -1,95 +1,122 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import "./Row.css";
 import Button from 'react-bootstrap/Button';
 
 const Row = ({
-    isNew,
-    alarmPoint,
-    buildingName,
-    buildingNumber,
-    alarmName,
-    alarmNumber,
-    sensorStatus,
-    alarmTag,
-    otherNotes,
-    workOrder
+    row,
+    setNewRow
 }) => {
-
-    const [isEditing, setEditing] = useState(isNew);
-    const [hideButton, setHideButton] = useState(false);
+    
+    const [edit, setEdit] = useState(false);
+    const [hide, setHide] = useState(false);
 
     return (
-        <tr onMouseOver={isEditing?null:setHideButton(true)} onMouseOut={isEditing?null:setHideButton(false)}>
+        <tr onMouseOver={(e)=>setHide(false)} onMouseOut={(e)=>setHide(true)}>
             <td>
-                {hideButton ? 
-                    <Button onClick={setEditing(true)}>
-                        edit
-                    </Button>
-                : null}
+                {
+                    setNewRow ? (
+                        <Button type="submit">Add</Button>
+                    ) : (
+                        hide ? (
+                            <div></div>
+                        ) : (
+                            edit ? (
+                                <Button onClick={() => setEdit(false)}>Save</Button>
+                            ) : (
+                                <Button onClick={() => setEdit(true)}>Edit</Button>
+                            )
+                        )
+                    )
+                }
             </td>
             <td>
                 <input 
                     type="text"
-                    value={alarmPoint}
+                    value={row.alarmTime}
+                    placeholder='Time'
+                    name="alarmTime"
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
+                />
+            </td>
+            <td>
+                <input 
+                    type="text"
+                    value={row.alarmPoint}
                     placeholder="Alarm Point"
                     name="alarmPoint"
-                    readOnly={!isEditing}
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={buildingName}
+                    value={row.buildingName}
                     placeholder="Building Name"
+                    name='buildingName'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={buildingNumber}
+                    value={row.buildingNumber}
                     placeholder="Building Number"
+                    name='buildingNumber'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={alarmName}
+                    value={row.alarmName}
                     placeholder="Alarm Name"
+                    name='alarmName'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={alarmNumber}
+                    value={row.alarmNumber}
                     placeholder="Alarm Number"
+                    name='alarmNumber'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={sensorStatus}
+                    value={row.sensorStatus}
                     placeholder="Sensor Status"
+                    name='sensorStatus'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={alarmTag}
+                    value={row.alarmTag}
                     placeholder="Alarm Tag"
+                    name='alarmTag'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={otherNotes}
+                    value={row.otherNotes}
                     placeholder="Other Notes"
+                    name='otherNotes'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
             <td>
                 <input
                     type="text"
-                    value={workOrder}
+                    value={row.workOrder}
                     placeholder="Work Order"
+                    name='workOrder'
+                    onChange={(e)=>setNewRow({...row, [e.target.name]: e.target.value})}
                 />
             </td>
         </tr>

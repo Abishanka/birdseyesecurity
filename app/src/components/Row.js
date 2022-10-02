@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./Row.css";
-import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as boot from 'react-bootstrap';
 
 const Row = ({
     row,
@@ -15,12 +16,12 @@ const Row = ({
             <td>
                 {
                     setNewRow ? (
-                        <Button type="submit">Add</Button>
+                        <boot.Button variant="dark" type="submit">Add</boot.Button>
                     ) : (
                         isEditing ? (
-                            <Button hidden={hide} onClick={() => setIsEditing(false)}>Save</Button>
+                            <boot.Button variant="dark" hidden={hide} onClick={() => setIsEditing(false)}>Save</boot.Button>
                         ) : (
-                            <Button hidden={hide} onClick={() => setIsEditing(true)}>Edit</Button>
+                            <boot.Button  variant="dark" hidden={hide} onClick={() => setIsEditing(true)}>Edit</boot.Button>
                         )
                         
                     )

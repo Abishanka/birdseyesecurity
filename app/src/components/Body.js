@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import "./Body.css";
 import Row from "./Row";
-import Table from 'react-bootstrap/Table';
+import * as boot from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Body = () => {
 
@@ -30,7 +31,7 @@ const Body = () => {
     return (
         <div className="body"> 
             <form onSubmit={addRow}>
-                <Table striped>
+                <boot.Table striped>
                     <thead className='table-header'>
                         <tr>
                             <th>------</th>
@@ -60,7 +61,7 @@ const Body = () => {
                             />
                         </Fragment>
                     </tbody>
-                </Table>
+                </boot.Table>
             </form>
         </div>
     )

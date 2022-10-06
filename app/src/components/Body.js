@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Body = () => {
 
     const emptyRow = {
+        id: '',
         alarmTime: '',
         alarmPoint: '',
         buildingName: '',
@@ -15,6 +16,7 @@ const Body = () => {
         alarmNumber: '',
         sensorStatus: '',
         alarmTag: '',
+        tagNotes: '',
         otherNotes: '',
         workOrder: '',
     }
@@ -24,45 +26,50 @@ const Body = () => {
 
     const addRow = (e) => {
         e.preventDefault();
-        setLog([...log, newRow]);
-        setNewRow(emptyRow);
+        if(newRow.alarmTime && newRow.alarmPoint){
+            setLog([...log, {...newRow, id: log.length}]);
+            setNewRow(emptyRow);
+        }
+        console.log(log);
+        //TODO backend: send newRow to backend
     }
 
     return (
         <div className="body"> 
-            <form onSubmit={addRow}>
-                <boot.Table striped>
-                    <thead className='table-header'>
-                        <tr>
-                            <th>------</th>
-                            <th>Time</th>
-                            <th>Alarm Point</th>
-                            <th>Building Name</th>
-                            <th>Building Number</th>
-                            <th>Alarm Name</th>
-                            <th>Alarm Number</th>
-                            <th>Sensor Status</th>
-                            <th>Alarm Tag</th>
-                            <th>Other Notes</th>
-                            <th>Work Order</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {log.map((row) => (
-                            <Row
-                                row={row}
-                            />
-                        ))}
-                        <Fragment>
-                            <Row 
-                                row={newRow}
-                                setNewRow={setNewRow}
-                                addRow={addRow}
-                            />
-                        </Fragment>
-                    </tbody>
-                </boot.Table>
-            </form>
+            <boot.Table striped>
+                <thead className='table-header'>
+                    <tr>
+                        <th>------</th>
+                        <th>Time</th>
+                        <th>Alarm Point</th>
+                        <th>Building Name</th>
+                        <th>Building Number</th>
+                        <th>Alarm Name</th>
+                        <th>Alarm Number</th>
+                        <th>Sensor Status</th>
+                        <th>Alarm Tag</th>
+                        <th>Tag Notes</th>
+                        <th>Other Notes</th>
+                        <th>Work Order</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {log.map((row,index) => (
+                        <Row
+                            key={index}
+                            index={index}
+                            row={row}
+                            log={log}
+                            setLog={setLog}
+                        />
+                    ))}
+                    <Row 
+                        row={newRow}
+                        setNewRow={setNewRow}
+                        addRow={addRow}
+                    />
+                </tbody>
+            </boot.Table>
         </div>
     )
 }

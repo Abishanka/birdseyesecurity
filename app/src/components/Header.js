@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 const Header = () => {
     return (
         <div className="header">
-            <h1>Alarm Log</h1>
+            <h1>ALARM LOG</h1>
             <div>
                 <input type="text" placeholder='Name'/>
                 <Button>Export Log to CSV</Button>

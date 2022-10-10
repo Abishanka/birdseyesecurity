@@ -8,36 +8,50 @@ const Header = ({
     log,
 }) => {
 
-    const data = [
-        {alarmPoint: "something", alarmTag: "something", tagNotes: "something"},
-        {alarmPoint: "something", alarmTag: "something", tagNotes: "something"},
-        {alarmPoint: "something", alarmTag: "something", tagNotes: "something"},
-        {alarmPoint: "something", alarmTag: "something", tagNotes: "something"},
-        {alarmPoint: "something", alarmTag: "something", tagNotes: "something"}
-      ];
+    const [date, setDate] = useState('');
+    const [name, setName] = useState('');
       
-      const headers = [
+    const headers = [
+        {label: 'Name', key: 'name'},
+        {label: 'Date', key: 'date'},
+        {label: 'Alarm Time', key: 'alarmTime'},
         {label: 'Alarm Point: ', key: 'alarmPoint'},
         {label: 'Alarm Tag: ', key: 'alarmTag'},
-        {label: 'Tag Notes: ', key: 'tagNotes'}
-      ]
+        {label: 'Tag Notes: ', key: 'tagNotes'},
+        {label: 'Other Notes: ', key: 'otherNotes'},
+        {label: 'Work Order: ', key: 'workOrder'},
+    ]
       
-      const csvReport = {
+    const csvReport = {
         filename: 'Report.csv',
         headers: headers,
-        data: data
-      }
+        data: log
+    }
+
+    const autoSetDate = (e) => {
+        e.preventDefault();
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        const yyyy = today.getFullYear();
+        const date = mm + '/' + dd + '/' + yyyy;
+        setDate(date);
+    }
 
     return (
         <div className="header">
             <h1>Alarm Log</h1>
             <div>
-                <input type="text" placeholder='Name'/>
-                <Button size="sm" variant="outline-primary"><CSVLink {...csvReport}>Export to CSV</CSVLink></Button>
                 <div>
-                    <Button variant="outline-primary" size="sm">Get Monthly Totals</Button>
+                    <input type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>
+                    <input type="text" placeholder="Today's Date" value={date} onClick={(e) => autoSetDate(e)}/>
+                    {/* change CSVLink to proper button */}
+                    <CSVLink className="btn btn-outline-primary" {...csvReport}>Export to CSV</CSVLink>
+                </div>
+                <div>
                     <input type='text' placeholder='Month'/>
                     <input type='text' placeholder='Year'/>
+                    <Button variant="outline-primary" size="sm">Get Monthly Totals</Button>
                 </div>
                 
             </div>

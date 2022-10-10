@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import "./Row.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as boot from 'react-bootstrap';
-import Dropdown from 'react-bootstrap/Dropdown';
 
 const Row = ({
     index,
@@ -30,7 +29,10 @@ const Row = ({
     }
 
     const setAlarmTime = (e) => {
-        e.preventDefault(); const d = new Date(); setNewRow({...row, "alarmTime": d.getHours().toString()+d.getMinutes().toString()})
+        e.preventDefault(); 
+        const d = new Date();
+        const t = d.getHours().toString().padStart(2, '0')+d.getMinutes().toString().padStart(2, '0')
+        setNewRow({...row, "alarmTime": t})
     }
 
     const cell = (value, placeholder, name) => {
@@ -41,7 +43,7 @@ const Row = ({
                 placeholder={placeholder}
                 name={name}
                 onChange={(e) => handleChange(e)}
-                onClick={setNewRow && name==="alarmTime" ? (e) => setAlarmTime(e): null}
+                onClick={setNewRow && name==="alarmTime" ? setAlarmTime: null}
             />
             ) : (
                 <div>{value}</div>
@@ -54,10 +56,10 @@ const Row = ({
             <td>
                 {
                     setNewRow ? (
-                        <boot.Button variant="dark" size="sm" type="submit" onClick={(e) => addRow(e)}>Add</boot.Button>
+                        <boot.Button variant="dark" size="sm" type="submit" onClick={addRow}>Add</boot.Button>
                     ) : (
                         isEditing ? (
-                            <boot.Button variant="dark" size="sm" hidden={hide} onClick={(e) => saveEdit(e)}>Save</boot.Button>
+                            <boot.Button variant="dark" size="sm" hidden={hide} onClick={saveEdit}>Save</boot.Button>
                         ) : (
                             <boot.Button  variant="dark" size="sm" hidden={hide} onClick={() => setIsEditing(true)}>Edit</boot.Button>
                         )
@@ -65,10 +67,31 @@ const Row = ({
                 }
             </td>
             {<td>
-                {cell(row.alarmTime, "Time", "alarmTime")}
+                {isEditing || setNewRow ? (
+                        <input 
+                            type="text"
+                            value={row.alarmTime}
+                            placeholder='Time'
+                            name="alarmTime"
+                            onChange={(e) => handleChange(e)}
+                            onClick={setNewRow ? (e) => setAlarmTime(e): null}
+                        />
+                    ) : (
+                        <div>{row.alarmTime}</div>
+                )}
             </td>}
             <td>
-                {cell(row.alarmPoint, "Alarm Point", "alarmPoint")}
+                {isEditing || setNewRow ? (
+                        <input 
+                            type="text"
+                            value={row.alarmPoint}
+                            placeholder='Alarm Point'
+                            name="alarmPoint"
+                            onChange={(e) => handleChange(e)}
+                        />
+                    ) : (
+                        <div>{row.alarmPoint}</div>
+                )}
             </td>
             {/*<td>
                 <input
@@ -116,7 +139,18 @@ const Row = ({
                 />
             </td> */}
             <td>
-                {cell(row.alarmTag, "Alarm Tag", "alarmTag")}
+                {isEditing || setNewRow ? (
+                        <boot.DropdownButton 
+                            onSelect={(e) => handleChange({target: {name: "alarmTag", value: e}})}
+                            title={row.alarmTag ? row.alarmTag : "Select Tag"}
+                        >
+                            <boot.Dropdown.Item eventKey="Wildlife" name="alarmTag">Wildlife</boot.Dropdown.Item>
+                            <boot.Dropdown.Item eventKey="Weather" name="alarmTag">Weather</boot.Dropdown.Item>
+                            <boot.Dropdown.Item eventKey="Other" name="alarmTag" value="Other">Other</boot.Dropdown.Item>`
+                        </boot.DropdownButton>
+                    ) : (
+                        <div>{row.alarmTag}</div>
+                )}
             </td>
             <td>
                 {cell(row.tagNotes, "Tag Notes", "tagNotes")}

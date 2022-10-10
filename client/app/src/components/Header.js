@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import "./Header.css";
-import Button from 'react-bootstrap/Button';
 import { CSVLink } from "react-csv";
+import * as boot from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Header = ({
@@ -10,18 +11,18 @@ const Header = ({
 
     const [date, setDate] = useState('');
     const [name, setName] = useState('');
-      
+
     const headers = [
-        {label: 'Name', key: 'name'},
-        {label: 'Date', key: 'date'},
-        {label: 'Alarm Time', key: 'alarmTime'},
-        {label: 'Alarm Point: ', key: 'alarmPoint'},
-        {label: 'Alarm Tag: ', key: 'alarmTag'},
-        {label: 'Tag Notes: ', key: 'tagNotes'},
-        {label: 'Other Notes: ', key: 'otherNotes'},
-        {label: 'Work Order: ', key: 'workOrder'},
+        { label: 'Name', key: 'name' },
+        { label: 'Date', key: 'date' },
+        { label: 'Alarm Time', key: 'alarmTime' },
+        { label: 'Alarm Point: ', key: 'alarmPoint' },
+        { label: 'Alarm Tag: ', key: 'alarmTag' },
+        { label: 'Tag Notes: ', key: 'tagNotes' },
+        { label: 'Other Notes: ', key: 'otherNotes' },
+        { label: 'Work Order: ', key: 'workOrder' },
     ]
-      
+
     const csvReport = {
         filename: 'Report.csv',
         headers: headers,
@@ -41,21 +42,29 @@ const Header = ({
     return (
         <div className="header">
             <h1>Alarm Log</h1>
-            <div>
-                <div>
-                    <input type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>
-                    <input type="text" placeholder="Today's Date" value={date} onClick={(e) => autoSetDate(e)}/>
-                    {/* change CSVLink to proper button */}
-                    <CSVLink className="btn btn-outline-primary" {...csvReport}>Export to CSV</CSVLink>
-                </div>
-                <div>
-                    <input type='text' placeholder='Month'/>
-                    <input type='text' placeholder='Year'/>
-                    <Button variant="outline-primary" size="sm">Get Monthly Totals</Button>
-                </div>
-                
-            </div>
-            
+            <boot.Form>
+                <boot.Row>
+                    <boot.Col md="4">
+                    </boot.Col>
+                    <boot.Col md="4">
+                        <boot.Row>
+                            <boot.Col md="8">
+                                <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
+                            </boot.Col>
+                            <boot.Col md="4">
+                                <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder="Today's Date" value={date} onClick={(e) => autoSetDate(e)} />
+                            </boot.Col>
+                        </boot.Row>
+                        <boot.Row>
+                            <boot.Col>
+                                {/* change CSVLink to proper button */}
+                                <CSVLink style={{ margin: "0.5vh" }} className="btn btn-outline-primary btn-sm" {...csvReport}>Export log to CSV</CSVLink>
+                            </boot.Col>
+                        </boot.Row>
+                    </boot.Col>
+                </boot.Row>
+            </boot.Form>
+
         </div>
     )
 }

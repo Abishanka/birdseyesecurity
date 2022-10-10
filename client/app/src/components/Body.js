@@ -7,18 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Body = () => {
 
     const emptyRow = {
-        id: '',
-        alarmTime: '',
         alarmPoint: '',
-        buildingName: '',
-        buildingNumber: '',
-        alarmName: '',
-        alarmNumber: '',
-        sensorStatus: '',
         alarmTag: '',
         tagNotes: '',
         otherNotes: '',
         workOrder: '',
+        extraInfo: '',
     }
 
     const [log, setLog] = useState([]);
@@ -40,17 +34,12 @@ const Body = () => {
                 <thead className='table-header'>
                     <tr>
                         <th>------</th>
-                        <th>Time</th>
                         <th>Alarm Point</th>
-                        <th>Building Name</th>
-                        <th>Building Number</th>
-                        <th>Alarm Name</th>
-                        <th>Alarm Number</th>
-                        <th>Sensor Status</th>
                         <th>Alarm Tag</th>
                         <th>Tag Notes</th>
                         <th>Other Notes</th>
                         <th>Work Order</th>
+                        <th>Extra Information</th>
                     </tr>
                 </thead>
                 <tbody>

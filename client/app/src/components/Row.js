@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import "./Row.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as boot from 'react-bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Row = ({
     index,
@@ -20,8 +21,11 @@ const Row = ({
         setIsEditing(false);
         //TODO backend, send updated row to backend
     }
-
+    
+    //arrow function is basically shorthand for var e = handleChange () { ... }.bind(this);
     const handleChange = (e) => {
+        console.log("changing")
+        console.log(e.target.value)
         console.log(isEditing)
         isEditing 
             ? setLog(log.map((r) => index === r.id ? {...r, [e.target.name]: e.target.value} : r))
@@ -48,7 +52,7 @@ const Row = ({
                     )
                 }
             </td>
-            <td>
+            {/*<td>
                 <input 
                     type="text"
                     value={row.alarmTime}
@@ -56,7 +60,7 @@ const Row = ({
                     name="alarmTime"
                     onChange={(e) => handleChange(e)}
                 />
-            </td>
+            </td>*/}
             <td>
                 <input 
                     type="text"
@@ -66,7 +70,7 @@ const Row = ({
                     onChange={(e) => handleChange(e)}
                 />
             </td>
-            <td>
+            {/*<td>
                 <input
                     type="text"
                     value={row.buildingName}
@@ -74,8 +78,8 @@ const Row = ({
                     name='buildingName'
                     onChange={(e) => handleChange(e)}
                 />
-            </td>
-            <td>
+            </td> */}
+            {/*<td>
                 <input
                     type="text"
                     value={row.buildingNumber}
@@ -83,8 +87,8 @@ const Row = ({
                     name='buildingNumber'
                     onChange={(e) => handleChange(e)}
                 />
-            </td>
-            <td>
+            </td> */}
+            {/*<td>
                 <input
                     type="text"
                     value={row.alarmName}
@@ -92,8 +96,8 @@ const Row = ({
                     name='alarmName'
                     onChange={(e) => handleChange(e)}
                 />
-            </td>
-            <td>
+            </td> */}
+            {/*<td>
                 <input
                     type="text"
                     value={row.alarmNumber}
@@ -101,8 +105,8 @@ const Row = ({
                     name='alarmNumber'
                     onChange={(e) => handleChange(e)}
                 />
-            </td>
-            <td>
+            </td> */}
+            {/*<td>
                 <input
                     type="text"
                     value={row.sensorStatus}
@@ -110,7 +114,7 @@ const Row = ({
                     name='sensorStatus'
                     onChange={(e) => handleChange(e)}
                 />
-            </td>
+            </td> */}
             <td>
                 <input
                     type="text"
@@ -148,6 +152,8 @@ const Row = ({
                 />
             </td>
         </tr>
+
+        
     )
 }
 

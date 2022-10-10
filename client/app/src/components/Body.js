@@ -4,9 +4,13 @@ import Row from "./Row";
 import * as boot from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Body = () => {
+const Body = ({
+    log,
+    setLog,
+}) => {
 
     const emptyRow = {
+        alarmTime: '',
         alarmPoint: '',
         alarmTag: '',
         tagNotes: '',
@@ -15,7 +19,6 @@ const Body = () => {
         extraInfo: '',
     }
 
-    const [log, setLog] = useState([]);
     const [newRow, setNewRow] = useState(emptyRow);
 
     const addRow = (e) => {
@@ -34,12 +37,12 @@ const Body = () => {
                 <thead className='table-header'>
                     <tr>
                         <th>------</th>
+                        <th>Alarm Time</th>
                         <th>Alarm Point</th>
                         <th>Alarm Tag</th>
                         <th>Tag Notes</th>
                         <th>Other Notes</th>
                         <th>Work Order</th>
-                        <th>Extra Information</th>
                     </tr>
                 </thead>
                 <tbody>

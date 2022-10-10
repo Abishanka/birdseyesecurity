@@ -24,16 +24,28 @@ const Row = ({
     
     //arrow function is basically shorthand for var e = handleChange () { ... }.bind(this);
     const handleChange = (e) => {
-        console.log("changing")
-        console.log(e.target.value)
-        console.log(isEditing)
         isEditing 
             ? setLog(log.map((r) => index === r.id ? {...r, [e.target.name]: e.target.value} : r))
             : setNewRow({...row, [e.target.name]: e.target.value});
     }
 
-    const isReadOnly = () => {
-        return !(isEditing || setNewRow)
+    const setAlarmTime = (e) => {
+        e.preventDefault(); const d = new Date(); setNewRow({...row, "alarmTime": d.getHours().toString()+d.getMinutes().toString()})
+    }
+
+    const cell = (value, placeholder, name) => {
+        return isEditing || setNewRow ? (
+            <input 
+                type="text"
+                value={value}
+                placeholder={placeholder}
+                name={name}
+                onChange={(e) => handleChange(e)}
+                onClick={setNewRow && name==="alarmTime" ? (e) => setAlarmTime(e): null}
+            />
+            ) : (
+                <div>{value}</div>
+            )
     }
         
 
@@ -42,33 +54,21 @@ const Row = ({
             <td>
                 {
                     setNewRow ? (
-                        <boot.Button variant="dark" type="submit" onClick={(e) => addRow(e)}>Add</boot.Button>
+                        <boot.Button variant="dark" size="sm" type="submit" onClick={(e) => addRow(e)}>Add</boot.Button>
                     ) : (
                         isEditing ? (
-                            <boot.Button variant="dark" hidden={hide} onClick={(e) => saveEdit(e)}>Save</boot.Button>
+                            <boot.Button variant="dark" size="sm" hidden={hide} onClick={(e) => saveEdit(e)}>Save</boot.Button>
                         ) : (
-                            <boot.Button  variant="dark" hidden={hide} onClick={() => setIsEditing(true)}>Edit</boot.Button>
+                            <boot.Button  variant="dark" size="sm" hidden={hide} onClick={() => setIsEditing(true)}>Edit</boot.Button>
                         )
                     )
                 }
             </td>
-            {/*<td>
-                <input 
-                    type="text"
-                    value={row.alarmTime}
-                    placeholder='Time'
-                    name="alarmTime"
-                    onChange={(e) => handleChange(e)}
-                />
-            </td>*/}
+            {<td>
+                {cell(row.alarmTime, "Time", "alarmTime")}
+            </td>}
             <td>
-                <input 
-                    type="text"
-                    value={row.alarmPoint}
-                    placeholder="Alarm Point"
-                    name="alarmPoint"
-                    onChange={(e) => handleChange(e)}
-                />
+                {cell(row.alarmPoint, "Alarm Point", "alarmPoint")}
             </td>
             {/*<td>
                 <input
@@ -116,31 +116,13 @@ const Row = ({
                 />
             </td> */}
             <td>
-                <input
-                    type="text"
-                    value={row.alarmTag}
-                    placeholder="Alarm Tag"
-                    name='alarmTag'
-                    onChange={(e) => handleChange(e)}
-                />
+                {cell(row.alarmTag, "Alarm Tag", "alarmTag")}
             </td>
             <td>
-                <input
-                    type="text"
-                    value={row.tagNotes}
-                    placeholder="Tag Notes"
-                    name='tagNotes'
-                    onChange={(e) => handleChange(e)}
-                />
+                {cell(row.tagNotes, "Tag Notes", "tagNotes")}
             </td>
             <td>
-                <input
-                    type="text"
-                    value={row.otherNotes}
-                    placeholder="Other Notes"
-                    name='otherNotes'
-                    onChange={(e) => handleChange(e)}
-                />
+                {cell(row.otherNotes, "Other Notes", "otherNotes")}
             </td>
             <td>
                 <input

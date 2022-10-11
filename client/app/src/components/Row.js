@@ -140,7 +140,7 @@ const Row = ({
             </td> */}
             <td>
                 {isEditing || setNewRow ? (
-                        <boot.DropdownButton 
+                        <boot.DropdownButton size="sm"
                             onSelect={(e) => handleChange({target: {name: "alarmTag", value: e}})}
                             title={row.alarmTag ? row.alarmTag : "Select Tag"}
                         >

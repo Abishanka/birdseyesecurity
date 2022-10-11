@@ -5,15 +5,17 @@ import { CSVLink } from "react-csv";
 
 
 const Header = ({
-    log,
+    log
 }) => {
 
     const [date, setDate] = useState('');
     const [name, setName] = useState('');
+    const [month, setMonth] = useState('');
+    const [year, setYear] = useState('');
       
     const headers = [
-        {label: 'Name', key: 'name'},
-        {label: 'Date', key: 'date'},
+        //{label: 'Name', key: 'name'},
+        //{label: 'Date', key: 'date'},
         {label: 'Alarm Time', key: 'alarmTime'},
         {label: 'Alarm Point: ', key: 'alarmPoint'},
         {label: 'Alarm Tag: ', key: 'alarmTag'},
@@ -44,13 +46,13 @@ const Header = ({
             <div>
                 <div>
                     <input type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)}/>
-                    <input type="text" placeholder="Today's Date" value={date} onClick={(e) => autoSetDate(e)}/>
+                    <input type="text" placeholder="Today's Date" value={date} onClick={autoSetDate}/>
                     {/* change CSVLink to proper button */}
                     <CSVLink className="btn btn-outline-primary" {...csvReport}>Export to CSV</CSVLink>
                 </div>
                 <div>
-                    <input type='text' placeholder='Month'/>
-                    <input type='text' placeholder='Year'/>
+                    <input type='text' placeholder='Month' onChange={(e) => setMonth(e.target.value)}/>
+                    <input type='text' placeholder='Year' onChange={(e) => setYear(e.target.value)}/>
                     <Button variant="outline-primary" size="sm">Get Monthly Totals</Button>
                 </div>
                 

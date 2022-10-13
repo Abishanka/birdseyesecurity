@@ -1,14 +1,13 @@
-import React, { Fragment, useState } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 import Body from './components/Body';
 import Header from './components/Header';
-import Button from 'react-bootstrap/Button';
 
 function App() {
 
-  const demoLog = [
+  var demoLog = [
     {
+      id: 0,
       alarmTime: '0930',
       alarmPoint: '0003',
       alarmTag: 'Other',
@@ -17,6 +16,7 @@ function App() {
       workOrder: '',
     },
     {
+      id: 1,
       alarmTime: '0934',
       alarmPoint: '0008',
       alarmTag: 'Weather',
@@ -25,6 +25,7 @@ function App() {
       workOrder: '',
     },
     {
+      id: 2,
       alarmTime: '0935',
       alarmPoint: '1202',
       alarmTag: 'Wildlife',

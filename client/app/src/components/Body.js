@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, {useState } from 'react';
 import "./Body.css";
 import Row from "./Row";
 import * as boot from 'react-bootstrap';

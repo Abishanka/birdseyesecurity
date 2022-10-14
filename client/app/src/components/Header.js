@@ -52,7 +52,7 @@ const Header = ({
                                 <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
                             </boot.Col>
                             <boot.Col md="4">
-                                <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder="Today's Date" value={date} onClick={(e) => autoSetDate(e)} />
+                                <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder="m/d/yyyy" value={date} onClick={(e) => autoSetDate(e)} />
                             </boot.Col>
                         </boot.Row>
                         <boot.Row>

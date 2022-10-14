@@ -1,50 +1,24 @@
-import React, { useState } from 'react';
-import './App.css';
-import Body from './components/Body';
-import Header from './components/Header';
+import Navbar from "./Navbar"
+import EditAlarmData from "./pages/EditAlarmData"
+import AlarmLog from "./pages/AlarmLog"
+import Tutorial from "./pages/Tutorial"
+import { Route, Routes } from "react-router-dom"
 
 function App() {
-
-  var demoLog = [
-    {
-      id: 0,
-      alarmTime: '0930',
-      alarmPoint: '0003',
-      alarmTag: 'Other',
-      tagNotes: 'Testing',
-      otherNotes: 'Monthly test',
-      workOrder: '',
-    },
-    {
-      id: 1,
-      alarmTime: '0934',
-      alarmPoint: '0008',
-      alarmTag: 'Weather',
-      tagNotes: 'wind',
-      otherNotes: '',
-      workOrder: '',
-    },
-    {
-      id: 2,
-      alarmTime: '0935',
-      alarmPoint: '1202',
-      alarmTag: 'Wildlife',
-      tagNotes: 'snake',
-      otherNotes: '',
-      workOrder: '',
-    },
-  ]
-
-
-
-  const [log, setLog] = useState(demoLog);
   return (
-    <div className="App">
-      
-      <Header log={log} />
-      <Body log={log} setLog={setLog}/>
-    </div>
-  );
+    <>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<AlarmLog/>} />
+          <Route path="/alarmlog" element={<AlarmLog/>} /> 
+          <Route path="/editalarmdata" element={<EditAlarmData/>} />
+          <Route path="/tutorial" element={<Tutorial/>} />
+        </Routes>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
+

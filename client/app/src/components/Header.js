@@ -17,6 +17,7 @@ const Header = ({
         { label: 'Date', key: 'date' },
         { label: 'Alarm Time', key: 'alarmTime' },
         { label: 'Alarm Point: ', key: 'alarmPoint' },
+        { label: 'Sensor Status: ', key: 'sensorStatus' },
         { label: 'Alarm Tag: ', key: 'alarmTag' },
         { label: 'Tag Notes: ', key: 'tagNotes' },
         { label: 'Other Notes: ', key: 'otherNotes' },

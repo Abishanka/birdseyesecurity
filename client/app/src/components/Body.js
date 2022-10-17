@@ -39,6 +39,7 @@ const Body = ({
                         <th>------</th>
                         <th>Alarm Time</th>
                         <th>Alarm Point</th>
+                        <th>Sensor Status</th>
                         <th>Alarm Tag</th>
                         <th>Tag Notes</th>
                         <th>Other Notes</th>

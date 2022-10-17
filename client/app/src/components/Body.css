@@ -1,3 +1,7 @@
 th {
-    position: sticky
+    position: sticky 
+}
+
+.table-header {
+    width:100%;
 }

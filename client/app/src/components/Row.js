@@ -129,15 +129,19 @@ const Row = ({
                     onChange={(e) => handleChange(e)}
                 />
             </td> */}
-            {/*<td>
-                <input
-                    type="text"
-                    value={row.sensorStatus}
-                    placeholder="Sensor Status"
-                    name='sensorStatus'
-                    onChange={(e) => handleChange(e)}
-                />
-            </td> */}
+            <td>
+                {isEditing || setNewRow ? (
+                        <boot.DropdownButton size="sm"
+                            onSelect={(e) => handleChange({target: {name: "sensorStatus", value: e}})}
+                            title={row.alarmTag ? row.alarmTag : "Select Status"}
+                        >
+                            <boot.Dropdown.Item eventKey="Alarm" name="sensorStatus">Alarm</boot.Dropdown.Item>
+                            <boot.Dropdown.Item eventKey="Tamper" name="sensorStatus">Tamper</boot.Dropdown.Item>
+                        </boot.DropdownButton>
+                    ) : (
+                        <div>{row.sensorStatus}</div>
+                )}
+            </td> 
             <td>
                 {isEditing || setNewRow ? (
                         <boot.DropdownButton size="sm"

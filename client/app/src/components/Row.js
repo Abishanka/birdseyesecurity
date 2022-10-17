@@ -133,7 +133,7 @@ const Row = ({
                 {isEditing || setNewRow ? (
                         <boot.DropdownButton size="sm"
                             onSelect={(e) => handleChange({target: {name: "sensorStatus", value: e}})}
-                            title={row.alarmTag ? row.alarmTag : "Select Status"}
+                            title={row.sensorStatus ? row.sensorStatus : "Select Status"}
                         >
                             <boot.Dropdown.Item eventKey="Alarm" name="sensorStatus">Alarm</boot.Dropdown.Item>
                             <boot.Dropdown.Item eventKey="Tamper" name="sensorStatus">Tamper</boot.Dropdown.Item>

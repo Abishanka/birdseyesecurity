@@ -11,6 +11,7 @@ const Header = ({
 
     const [date, setDate] = useState('');
     const [name, setName] = useState('');
+    const [shift, setShift] = useState('');
 
     const headers = [
         { label: 'Name', key: 'name' },
@@ -40,6 +41,14 @@ const Header = ({
         setDate(date);
     }
 
+    const autoSetShift = (e) => {
+        e.preventDefault(); // default shifts 0-> 8 (1), 8->4 (2), 4->0 (3)
+        const d = new Date();
+        const hour = d.getHours();
+        const shift = hour >= 0 && hour < 8 ? "Shift 1" : (hour >= 8 && hour < 16 ? "Shift 2" : (hour >= 16 ? "Shift 3" : "Error"));
+        setShift(shift);
+    }
+
     return (
         <div className="header">
             <h1>Alarm Log</h1>
@@ -49,11 +58,14 @@ const Header = ({
                     </boot.Col>
                     <boot.Col md="4">
                         <boot.Row>
-                            <boot.Col md="8">
+                            <boot.Col md="12">
                                 <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
                             </boot.Col>
-                            <boot.Col md="4">
+                            <boot.Col md="6">
                                 <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder="m/d/yyyy" value={date} onClick={(e) => autoSetDate(e)} />
+                            </boot.Col>
+                            <boot.Col md = "6">
+                                <boot.Form.Control style={{ margin: "0.5vh" }} type="text" placeholder="Current Shift" value={shift} onClick={(e) => autoSetShift(e)} />
                             </boot.Col>
                         </boot.Row>
                         <boot.Row>

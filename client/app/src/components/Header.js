@@ -42,7 +42,7 @@ const Header = ({
     }
 
     const autoSetShift = (e) => {
-        e.preventDefault(); // default shifts 0-> 8 (1), 8->4 (2), 4->0 (3)
+        e.preventDefault(); 
         const d = new Date();
         const hour = d.getHours();
         //const shift = hour >= 0 && hour < 8 ? "Shift 1" : (hour >= 8 && hour < 16 ? "Shift 2" : (hour >= 16 ? "Shift 3" : "Error"));

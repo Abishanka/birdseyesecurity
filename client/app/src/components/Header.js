@@ -45,7 +45,9 @@ const Header = ({
         e.preventDefault(); // default shifts 0-> 8 (1), 8->4 (2), 4->0 (3)
         const d = new Date();
         const hour = d.getHours();
-        const shift = hour >= 0 && hour < 8 ? "Shift 1" : (hour >= 8 && hour < 16 ? "Shift 2" : (hour >= 16 ? "Shift 3" : "Error"));
+        //const shift = hour >= 0 && hour < 8 ? "Shift 1" : (hour >= 8 && hour < 16 ? "Shift 2" : (hour >= 16 ? "Shift 3" : "Error"));
+        //new format is: Shift 1 goes from 6 am - 6 pm and Shift 2 goes from 6 pm to 6 am 
+        const shift = hour >= 6 && hour < 18 ? "Shift 1" : "Shift 2";
         setShift(shift);
     }
 

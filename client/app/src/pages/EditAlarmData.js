@@ -17,6 +17,7 @@ export default function EditAlarmData() {
                 </select>
                 <input
                     type="text"
+                    className="inputField"
                     required
                 />
                 <button>submit</button>

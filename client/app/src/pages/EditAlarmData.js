@@ -2,6 +2,10 @@ import * as boot from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function EditAlarmData() {
+    function clickHandler() {
+        console.log('Clicked the button!')
+        //TO DO: Send information to back-end 
+    }
     return (
         <>
             <h1>Edit Alarm Data</h1>
@@ -24,8 +28,7 @@ export default function EditAlarmData() {
                     </boot.Form.Group>
                 </boot.Form>
             </boot.Container>
-            {/*TO DO: Send info to back-end*/}
-            <boot.Button>Submit</boot.Button>
+            <boot.Button onClick={clickHandler}>Submit</boot.Button>
         </>
     )
 }

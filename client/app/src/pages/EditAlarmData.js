@@ -26,16 +26,19 @@ export default function EditAlarmData() {
             </boot.DropdownButton>
             <boot.Container>
                 <boot.Form>
-                    <boot.Form.Group>
-                        <boot.Form.Label>Alarm Point: </boot.Form.Label>
-                        <boot.Form.Control name="alarmPoint" placeholder="Alarm Point"></boot.Form.Control>
-                        <boot.Form.Label>Bldg. Name/Bldg.#: </boot.Form.Label>
-                        <boot.Form.Control name="bldgNameAndNumber" placeholder="Bldg. Name/Bldg.#"></boot.Form.Control>
-                        <boot.Form.Label>Alarm Name/#: </boot.Form.Label>
-                        <boot.Form.Control name="alarmNameAndNumber" placeholder="Alarm Name/#"></boot.Form.Control>
-                        <boot.Form.Label>Sensor Status: </boot.Form.Label>
-                        <boot.Form.Control name="sensorStatus" placeholder="Sensor Status"></boot.Form.Control>
-                    </boot.Form.Group>
+                    <boot.Row>
+                        <boot.Col md="4"></boot.Col>
+                        <boot.Col md="4">
+                            <boot.Form.Label>Alarm Point: </boot.Form.Label>
+                            <boot.Form.Control name="alarmPoint" placeholder="Alarm Point"></boot.Form.Control>
+                            <boot.Form.Label>Bldg. Name/Bldg.#: </boot.Form.Label>
+                            <boot.Form.Control name="bldgNameAndNumber" placeholder="Bldg. Name/Bldg.#"></boot.Form.Control>
+                            <boot.Form.Label>Alarm Name/#: </boot.Form.Label>
+                            <boot.Form.Control name="alarmNameAndNumber" placeholder="Alarm Name/#"></boot.Form.Control>
+                            <boot.Form.Label>Sensor Status: </boot.Form.Label>
+                            <boot.Form.Control name="sensorStatus" placeholder="Sensor Status"></boot.Form.Control>
+                        </boot.Col>
+                    </boot.Row>
                 </boot.Form>
             </boot.Container>
             <boot.Button onClick={clickHandler}>Submit</boot.Button>

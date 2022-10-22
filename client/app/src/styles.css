@@ -65,3 +65,15 @@
     font-style: oblique;
     opacity: 0.8;
   }
+
+.underPassword
+{
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.backButton
+{
+  padding: 3px;
+}

@@ -26,7 +26,7 @@ export default function EditAlarmData() {
             </boot.DropdownButton>
             <boot.Container>
                 <boot.Form>
-                    <boot.Form.Group class="form-group">
+                    <boot.Form.Group>
                         <boot.Form.Label>Alarm Point: </boot.Form.Label>
                         <boot.Form.Control name="alarmPoint" placeholder="Alarm Point"></boot.Form.Control>
                         <boot.Form.Label>Bldg. Name/Bldg.#: </boot.Form.Label>

@@ -1,7 +1,5 @@
 import * as boot from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Authorization from '../Authorization';
-import EditAlarmData from "./EditAlarmData";
 import { useNavigate } from 'react-router-dom';
 import {useState} from 'react';
 
@@ -15,7 +13,7 @@ function SignIn() {
     const [data,setData]=useState(null);
     const [print, setPrint]=useState(false);
     
-    function clickHandler() {
+    function clickSubmit() {
         if(data == password)
         {
             navigate("/editalarmdata")
@@ -28,6 +26,10 @@ function SignIn() {
         }
     }
 
+    function clickChangePassword() {
+        navigate("/changepassword")
+    }
+
     function getData(val)
     {
         setData(val.target.value)
@@ -38,13 +40,16 @@ function SignIn() {
     <div>
     <boot.Container>
         <boot.Form>
-            <boot.Form.Group class="form-group">
+            <boot.Form.Group class="form-group form-group-sm">
                 <boot.Form.Label>Enter administrator password to access: password for now is "hello" </boot.Form.Label>
                 <boot.Form.Control onChange={getData} name="adminPassword" placeholder="password"></boot.Form.Control>
             </boot.Form.Group>
         </boot.Form>
     </boot.Container>
-    <boot.Button onClick={clickHandler}>Submit</boot.Button>
+    <div class="underPassword">
+        <boot.Button onClick={clickSubmit}>Submit</boot.Button>
+        <boot.Button onClick={clickChangePassword}>Change Password</boot.Button>
+    </div>
     {
         print?
         <h6 class="wrongPassword">wrong password - try again</h6>

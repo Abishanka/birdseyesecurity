@@ -38,14 +38,18 @@ function SignIn() {
 
   return (
     <div>
-    <boot.Container>
-        <boot.Form>
-            <boot.Form.Group class="form-group form-group-sm">
-                <boot.Form.Label>Enter administrator password to access: password for now is "hello" </boot.Form.Label>
-                <boot.Form.Control onChange={getData} name="adminPassword" placeholder="password"></boot.Form.Control>
-            </boot.Form.Group>
-        </boot.Form>
-    </boot.Container>
+  <boot.Container>
+    <boot.Form>
+        <boot.Form.Label>Type in password (hello)</boot.Form.Label>
+        <boot.Row>
+        <boot.Col md="4"></boot.Col>
+        <boot.Col md="4">
+            <boot.Form.Control onChange={getData} name="adminPassword" placeholder="password"></boot.Form.Control>
+        </boot.Col>
+        </boot.Row>
+    </boot.Form>
+  </boot.Container>
+
     <div class="underPassword">
         <boot.Button onClick={clickSubmit}>Submit</boot.Button>
         <boot.Button onClick={clickChangePassword}>Change Password</boot.Button>

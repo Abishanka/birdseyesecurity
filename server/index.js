@@ -1,16 +1,25 @@
 //we're going to require the express middleware (express dependency) 
 const express = require("express");
 const app = express();
-const pgp = require('pg-promise')
-const db = pgp('postgres://username:password@host:port/database')
+const pgp = require('pg-promise')();
+const db = pgp('postgres://postgres:root@localhost:5432/postgres')
 
 app.listen(3001, () => {
     console.log("running on port 3001");
+
+    db.one('SELECT $1 AS value', "WORKING")
+        .then((data) => {
+            console.log('DB Status:', data.value)
+        })
+        .catch((error) => {
+            console.log('ERROR:', error)
+        })
 })
 
 app.post('/insert_row', function(req,res){
     //anytime new row button is clicked, execute
     //send some response...
+    console.log(req.body.key);
     db.one(`INSERT INTO <tablename> VALUES (${req.query.key}, ${req.query.alarmTime}, ${req.query.alarmPoint}, ${req.query.alarmTag}, ${req.query.tagNotes}, ${req.query.otherNotes}, ${req.query.workOrder}, ${req.query.extraInfo})`)
         .then(() => {
             db.one(`SELECT * FROM <tablename> WHERE alarmPoint="${req.query.alarmPoint}"`)

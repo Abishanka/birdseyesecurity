@@ -8,7 +8,7 @@ export default function Navbar() {
       </Link>
       <ul>
         <CustomLink to="/alarmlog">Alarm Log</CustomLink>
-        <CustomLink to="/editalarmdata">Edit Alarm Data</CustomLink>
+        <CustomLink to="/signin">Edit Alarm Data</CustomLink>
         <CustomLink to="/tutorial">Tutorial</CustomLink>
       </ul>
     </nav>

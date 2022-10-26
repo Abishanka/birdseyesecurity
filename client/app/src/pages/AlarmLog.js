@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Body from '../components/Body';
 import Header from '../components/Header';
+import * as boot from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AlarmLog() {
 
@@ -43,7 +45,7 @@ function AlarmLog() {
   return (
     <div className="AlarmLog">
       <Header log={log} />
-      <Body log={log} setLog={setLog}/>
+      <Body log={log} setLog={setLog}/> 
     </div>
   );
 }

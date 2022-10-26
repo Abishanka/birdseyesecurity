@@ -8,12 +8,14 @@
     "devStart": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Leon Kwan, Grace Hu, Abishanka Saha, Alec Rothenberg",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
-    "nodemon": "^2.0.20",
     "pg-promise": "^10.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

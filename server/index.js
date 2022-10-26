@@ -4,6 +4,7 @@ const app = express();
 const pgp = require('pg-promise')();
 const db = pgp('postgres://postgres:root@localhost:5432/postgres')
 
+//run npm run devStart
 app.listen(3001, () => {
     console.log("running on port 3001");
 

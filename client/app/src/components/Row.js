@@ -21,8 +21,7 @@ const Row = ({
     const saveEdit = (e) => {
         e.preventDefault();
         setIsEditing(false);
-        //sending updated row to backend by making an http request with axios
-        //The url is the server path we send the request to; note that it is in string format.
+        //sending updated row to backend by making an http request with axios, the url is the server path we send the request to; note that it is in string format.
         Axios
         .post(placeholder, row)
         .then(response => {
@@ -62,7 +61,7 @@ const Row = ({
             )
     }
         
-
+{/*{/*onMouseOver={isEditing ? null : (e)=>{setHide(false)}} onMouseOut={isEditing ? null : (e)=>{setHide(true)}} */}
     return (
         <tr onMouseOver={isEditing ? null : (e)=>{setHide(false)}} onMouseOut={isEditing ? null : (e)=>{setHide(true)}}>
             <td>

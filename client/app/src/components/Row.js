@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import "./Row.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as boot from 'react-bootstrap';
+import Axios from 'axios';
 
 const Row = ({
     index,
@@ -14,11 +15,22 @@ const Row = ({
     
     const [isEditing, setIsEditing] = useState(false);
     const [hide, setHide] = useState(false);
+    const url = "https://localhost:3001/";
+    const placeholder = "https://jsonplaceholder.typicode.com/posts";
 
     const saveEdit = (e) => {
         e.preventDefault();
         setIsEditing(false);
-        //TODO backend, send updated row to backend
+        //sending updated row to backend by making an http request with axios
+        //The url is the server path we send the request to; note that it is in string format.
+        Axios
+        .post(placeholder, row)
+        .then(response => {
+            console.log(response)
+        })
+        .catch(error => {
+            console.log(error)
+        })
     }
     
     //arrow function is basically shorthand for var e = handleChange () { ... }.bind(this);
@@ -170,6 +182,14 @@ const Row = ({
                     name='workOrder'
                     onChange={(e) => handleChange(e)}
                 />
+            </td>
+            <td>
+                <boot.DropdownButton size="sm" variant="dark">
+                    {/* Based on what the alarm point # is, it will autofill the other info like building name/#, alarm name/#, sensor status */}
+                    <label>Bldg. Name/Bldg. # : </label>
+                    <label>Alarm Name/# : </label>
+                    <label>Sensor Status : </label>
+                </boot.DropdownButton>
             </td>
         </tr>
 

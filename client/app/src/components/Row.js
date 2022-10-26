@@ -185,7 +185,7 @@ const Row = ({
             </td>
             <td>
                 <boot.DropdownButton size="sm" variant="dark">
-                    {/* Based on what the alarm point # is, it will autofill the other info like building name/#, alarm name/#, sensor status */}
+                    {/* Based on what the alarm point # is, it will autofill the other info like building name/#, alarm name/#, sensor status --> they'll configure this */}
                     <label>Bldg. Name/Bldg. # : </label>
                     <label>Alarm Name/# : </label>
                     <label>Sensor Status : </label>
